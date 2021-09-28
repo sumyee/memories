@@ -18,14 +18,14 @@ const App = () => {
   const renderComp = () => {
     switch (CompName) {
       case 'introduction':
-        setComp(<Introduction nextPage={() => nextPage()} />);
+        setComp(<Introduction nextPage={() => nextPage('pre-live')} />);
         break;
       case 'pre-live':
         setComp(<PreLive nextPage={() => nextPage('welcome')} />);
         break;
 
       default:
-        setComp(<Welcome nextPage={() => nextPage('pre-live')} />);
+        setComp(<Welcome nextPage={() => nextPage('introduction')} />);
         break;
     }
   };

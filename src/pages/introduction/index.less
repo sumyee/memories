@@ -1,5 +1,42 @@
+@import "../../styles/common.less";
+
 .introduction-wrap {
   position: relative;
   width: 100vw;
   height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  .top-logo {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 8.8rem;
+  }
+
+  .text-wrap {
+    position: absolute;
+    // top: 18rem;
+    top: 20%;
+    padding: 0 6.4rem 0 1.5rem;
+    color: @main-color;
+    line-height: 1.6;
+    font-size: 1rem;
+
+    .middle-text {
+      padding: 5rem 0 5rem 5rem;
+    }
+
+    .step3-text {
+      margin-top: 10rem;
+    }
+  }
+
+  .next-btn {
+    position: absolute;
+    width: 5rem;
+    left: 1.5rem;
+    bottom: 10rem;
+  }
 }

@@ -53,6 +53,7 @@
         var recalc = function () {
           var width = docEl.clientWidth;
           docEl.style.fontSize = _rootFontSize * (width / 750) + 'px';
+          // docEl.style.fontSize = _rootFontSize * (width / 750) > 20 ? 20 : _rootFontSize * (width / 750) + 'px';
         };
         recalc();
         if (!doc.addEventListener) return;

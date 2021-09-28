@@ -7,20 +7,25 @@ import "./index.less";
 
 const Welcome = (props) => {
   
-  useEffect(() => {
-    setTimeout(() => {
-      console.log(props);
-      if(props && props.nextPage) {
-        props.nextPage()
-      }
-    }, 3000);
-  }, [])
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     console.log(props);
+  //     if(props && props.nextPage) {
+  //       props.nextPage()
+  //     }
+  //   }, 3000);
+  // }, [])
+
+  const handleClick = () => {
+    props.nextPage()
+  }
 
   return (
     <>
       <div
         className="welcome-wrap animate__animated animate__fadeIn"
         style={{ backgroundImage: `url(${BgImg})` }}
+        onClick={handleClick}
       >
         <img className="welcome-top-img" src={TopImg} alt="roaringwild" />
         <img className="welcome-main-img" src={MainImg} alt="roaringwild" />
