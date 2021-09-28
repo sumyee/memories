@@ -1,19 +1,40 @@
-import React from "react";
-import Router from "./router";
+import React, { Suspense, useEffect, useState } from 'react';
+import './app.less';
 
-import "./app.less";
+const emptyComp = <div></div>;
+const Welcome = React.lazy(() => import('@pages/welcome/index.jsx'));
+const Introduction = React.lazy(() => import('@pages/introduction/index.jsx'));
+const PreLive = React.lazy(() => import('@pages/pre-live/index.jsx'));
 
-// const App = () => {
-//   return <Router></Router>;
-// };
-class App extends React.Component {
-  componentDidMount() {
-    console.log('componentDidMount');
-  }
+const App = () => {
+  const [Comp, setComp] = useState(emptyComp);
+  const [CompName, setCompName] = useState('');
 
-  render() {
-    return <Router></Router>;
-  }
-}
+  const nextPage = (compName) => {
+    console.log('nextPage', compName);
+    setCompName(compName);
+  };
+
+  const renderComp = () => {
+    switch (CompName) {
+      case 'introduction':
+        setComp(<Introduction nextPage={() => nextPage()} />);
+        break;
+      case 'pre-live':
+        setComp(<PreLive nextPage={() => nextPage('welcome')} />);
+        break;
+
+      default:
+        setComp(<Welcome nextPage={() => nextPage('pre-live')} />);
+        break;
+    }
+  };
+
+  useEffect(() => {
+    renderComp();
+  }, [CompName]);
+
+  return <Suspense fallback={''}>{Comp}</Suspense>;
+};
 
 export default App;
