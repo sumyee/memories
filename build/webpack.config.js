@@ -31,6 +31,10 @@ module.exports = {
         type: 'javascript/auto'
       },
       {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
+      {
         test: /\.less|css$/,
         use: ["style-loader", "css-loader", "less-loader"]
       }

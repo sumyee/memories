@@ -1,6 +1,7 @@
 @import "@styles/common.less";
 
 .invitation-wrap {
+  position: relative;
   overflow: hidden;
 
   .name-input-container {
@@ -15,12 +16,12 @@
 
     .name-input-wrap {
       position: relative;
-  
+
       .name-input-bg {
         width: 100%;
         z-index: 0;
       }
-  
+
       .name-input {
         position: absolute;
         width: 80%;
@@ -35,6 +36,45 @@
         color: @main-color;
         text-align: center;
       }
+    }
   }
+
+  .name-input-btns {
+    position: absolute;
+    width: 75%;
+    left: 50%;
+    bottom: 13rem;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-around;
+
+    .back-btn {
+      width: 5rem;
+    }
+    .next-btn {
+      width: 5rem;
+    }
+  }
+
+  .poster-wrap {
+    .poster-img {
+      display: block;
+      width: 75%;
+      margin: 20% auto 0;
+    }
+
+    .poster-btns {
+      width: 75%;
+      margin: 2.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+
+      .save-btn {
+        width: 7rem;
+      }
+      .next-btn {
+        width: 5rem;
+      }
+    }
   }
 }

@@ -10,7 +10,7 @@ const PreLive = React.lazy(() => import('@pages/pre-live/index.jsx'));
 
 const App = () => {
   const [Comp, setComp] = useState(emptyComp);
-  const [CompName, setCompName] = useState('invitation');
+  const [CompName, setCompName] = useState('questions');
 
   const nextPage = (compName) => {
     console.log('nextPage', compName);
