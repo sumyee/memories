@@ -1,0 +1,40 @@
+@import "@styles/common.less";
+
+.invitation-wrap {
+  overflow: hidden;
+
+  .name-input-container {
+    width: 65%;
+    margin: 50% auto 0;
+    text-align: center;
+
+    .input-title {
+      font-size: 1.4rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .name-input-wrap {
+      position: relative;
+  
+      .name-input-bg {
+        width: 100%;
+        z-index: 0;
+      }
+  
+      .name-input {
+        position: absolute;
+        width: 80%;
+        height: 60%;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -40%);
+        border: none;
+        background: transparent;
+        outline: none;
+        font-size: 2rem;
+        color: @main-color;
+        text-align: center;
+      }
+  }
+  }
+}

@@ -42,8 +42,10 @@ module.exports = {
       "@pages": path.resolve(__dirname, "../src/pages/"),
       "@static": path.resolve(__dirname, "../src/static/"),
       "@utils": path.resolve(__dirname, "../src/utils/"),
+      "@styles": path.resolve(__dirname, "../src/styles/"),
       "@service": path.resolve(__dirname, "../src/service/"),
-      "@constant": path.resolve(__dirname, "../src/constant/")
+      "@constant": path.resolve(__dirname, "../src/constant/"),
+      "@components": path.resolve(__dirname, "../src/components/")
     }
   },
   plugins: [

@@ -1,10 +1,23 @@
+@import "./styles/common.less";
+@import "./styles/font.less";
+
 * {
   margin: 0;
   padding: 0;
 }
 
 body {
+  color: @main-color;
   background-color: #f2f5e6;
+}
+
+.page-wrap {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .safe-padding-top {
