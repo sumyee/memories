@@ -1,3 +1,4 @@
+@import "../../styles/common.less";
 .questions-wrap {
   font-family: 'GlowSansJ-Condensed-Medium';
   overflow: hidden;
@@ -7,13 +8,21 @@
     top: 30%;
     left: 50%;
     transform: translateX(-50%);
-    width: 80%;
+    width: 75%;
   }
 
   .question-cont {
     width: 78%;
     margin: 30% auto 0;
-    font-size: 1.2rem;
+    font-size: @main-font-size;
+
+    &.set-font-size {
+      text-align: center;
+
+      .select-text {
+        font-size: @main-font-size !important;
+      }
+    }
 
     .question-mark {
       text-align: center;
@@ -21,17 +30,51 @@
 
     .question-title {
       line-height: 1.5;
-      margin-top: 1.3rem;
+      margin-top: 13px;
     }
 
-    .select-box {
-      // background-image: url('@static/images/select_bg.png');
-      // background-size: cover;
+    .select-box-wrap {
+      width: 100%;
+      margin-top: 50px;
+      .select-box {
+        position: relative;
+        width: 88%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+
+        .select-bg {
+          width: 100%;
+        }
+
+        .select-text {
+          width: 72%;
+          position: absolute;
+          top: 40%;
+          left: 50%;
+          transform: translate(-50%, -40%);
+          word-break: break-word;
+          text-align: center;
+          line-height: 1.4;
+          font-size: 14px;
+        }
+      }
     }
+    .question-btns {
+      width: 76%;
+      text-align: initial;
+      margin: 45px auto 0;
+      .back-btn {
+        width: 25.5%;
+      }
+    }
+
   }
   
   .questions-next-img {
     position: absolute;
+    width: 15%;
     top: 68%;
     left: 50%;
     transform: translateX(-50%);
