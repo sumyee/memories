@@ -14,11 +14,9 @@ const App = () => {
   const [selectedStr, setSelectedStr] = useState('');
   const [CompName, setCompName] = useState('welcome');
 
-  const ogg = require('@static/music/bgm.mp3').default;
-  const audio = new Audio(ogg);
-
   // 播放背景音乐
   const playAudio = () => {
+    const audio = document.getElementById('bgAudio');
     audio.play();
   };
 
@@ -43,7 +41,7 @@ const App = () => {
         );
         break;
       case 'result':
-        setComp(<Result selected={selectedStr} nextPage={() => nextPage()} />);
+        setComp(<Result selected={selectedStr} nextPage={() => nextPage('invitation')} />);
         break;
       case 'invitation':
         setComp(<Invitation nextPage={() => nextPage()} />);
@@ -73,6 +71,7 @@ const App = () => {
     <>
       <Suspense fallback={''}>{Comp}</Suspense>
       <div className="load-font">font</div>
+      <audio src={require(`@static/music/bgm.mp3`).default} controls="controls" preload="true" id="bgAudio" hidden></audio>
     </>
   );
 };

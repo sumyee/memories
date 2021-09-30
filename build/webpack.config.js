@@ -8,6 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'js/[name]-[contenthash:8].js',
+    publicPath: '/dist/',
   },
   module: {
     rules: [
@@ -25,6 +26,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 4 * 1024,
+              outputPath: '/images'
             },
           },
         ],
@@ -32,7 +34,14 @@ module.exports = {
       },
       {
         test: /\.(ogg|mp3)$/,
-        use: ['file-loader'],
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: './music'
+            }
+          }
+        ],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,

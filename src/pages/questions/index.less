@@ -62,19 +62,55 @@
       }
     }
     .question-btns {
-      width: 76%;
+      width: 65%;
       text-align: initial;
       margin: 45px auto 0;
+      display: flex;
+      justify-content: space-between;
       .back-btn {
-        width: 25.5%;
+        height: 25px;
+      }
+      .next-btn {
+        height: 25px;
+      }
+      .memories-btn {
+        height: 25px;
       }
     }
+  }
 
+  .input-question {
+    width: 100%;
+    text-align: center;
+  }
+
+  .input-box-wrap {
+    width: 100%;
+    position: relative;
+
+    .input-box-bg {
+      width: 100%;
+    }
+
+    textarea {
+      position: absolute;
+      top: 30%;
+      width: 61%;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 38%;
+      font-size: 15px;
+      border: none;
+      outline: none;
+      background: transparent;
+      line-height: 2;
+      color: @main-color;
+    }
   }
   
   .questions-next-img {
     position: absolute;
-    width: 15%;
+    height: 25px;
     top: 68%;
     left: 50%;
     transform: translateX(-50%);

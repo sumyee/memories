@@ -4,6 +4,8 @@ import { countdown } from "@utils/index";
 import IntroductionBg from "@static/images/introduction_bg.jpg";
 import Logo from "@static/images/logo.png";
 import NextBtn from "@static/images/next_btn.png";
+import MemoriesText from "@static/images/memories_text.png";
+import Ss22Text from "@static/images/ss22_text.png";
 import "./index.less";
 
 const Introduction = props => {
@@ -95,6 +97,11 @@ const Introduction = props => {
           className="next-btn"
           onClick={handleStep}
         />
+
+        <div className="bottom-text-img">
+          <img src={MemoriesText} alt="" />
+          <img src={Ss22Text} alt="" />
+        </div>
       </div>
     </>
   );
