@@ -8,7 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'js/[name]-[contenthash:8].js',
-    publicPath: '/dist/',
+    // publicPath: './dist',
   },
   module: {
     rules: [
@@ -26,7 +26,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 4 * 1024,
-              outputPath: '/images'
+              outputPath: './images'
             },
           },
         ],
@@ -69,7 +69,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../public/index.html'),
-      title: 'Memories',
+      title: 'ROARINGWILD SS22',
     }),
   ],
 };

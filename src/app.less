@@ -7,6 +7,7 @@
 }
 
 body {
+  font-family: 'PingFang SC', Arial, Helvetica, sans-serif;
   color: @main-color;
   background-color: #f2f5e6;
 }
@@ -25,6 +26,21 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+
+.is-pc {
+  .page-wrap {
+    max-width: 375px;
+    margin: 0 auto;
+  }
+}
+
+.tap-active {
+  transition: all .3s;
+  &:active {
+    transform: scale(0.8);
+    transition: all .3s;
+  }
 }
 
 .safe-padding-top {

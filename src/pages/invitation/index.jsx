@@ -13,7 +13,7 @@ import "./index.less";
 
 const NAME_MAX_LEN = 15;
 
-const Invitation = () => {
+const Invitation = (props) => {
   const [showPoster, setShowPoster] = useState(false);
   const [name, setName] = useState("");
   const [base64, setBase64] = useState("");
@@ -50,8 +50,11 @@ const Invitation = () => {
         <img src={base64} className="poster-img" />
 
         <div className="poster-btns">
-          <img src={SaveBtn} className="save-btn" />
-          <img src={NextBtn} className="next-btn" onClick={handleNext} />
+          {/* <img src={SaveBtn} className="save-btn" /> */}
+          <p style={{ fontSize: "10px", lineHeight: "25px" }}>长按保存图片</p>
+          <img src={NextBtn} className="next-btn" onClick={() => {
+            props.nextPage && props.nextPage()
+          }} />
         </div>
       </div>
     );

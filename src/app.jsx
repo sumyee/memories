@@ -1,4 +1,5 @@
 import React, { Suspense, useEffect, useState } from 'react';
+import { isMobile } from '@utils/index';
 import './app.less';
 
 const emptyComp = <div></div>;
@@ -7,7 +8,7 @@ const Introduction = React.lazy(() => import('@pages/introduction/index.jsx'));
 const Questions = React.lazy(() => import('@pages/questions/index.jsx'));
 const Result = React.lazy(() => import('@pages/result/index.jsx'));
 const Invitation = React.lazy(() => import('@pages/invitation/index.jsx'));
-const PreLive = React.lazy(() => import('@pages/pre-live/index.jsx'));
+const Live = React.lazy(() => import('@pages/live/index.jsx'));
 
 const App = () => {
   const [Comp, setComp] = useState(emptyComp);
@@ -28,7 +29,7 @@ const App = () => {
   const renderComp = () => {
     switch (CompName) {
       case 'introduction':
-        setComp(<Introduction nextPage={() => nextPage('questions')} />);
+        setComp(<Introduction nextPage={(page) => nextPage(page)} />);
         break;
       case 'questions':
         setComp(
@@ -44,10 +45,10 @@ const App = () => {
         setComp(<Result selected={selectedStr} nextPage={() => nextPage('invitation')} />);
         break;
       case 'invitation':
-        setComp(<Invitation nextPage={() => nextPage()} />);
+        setComp(<Invitation nextPage={() => nextPage('live')} />);
         break;
-      case 'pre-live':
-        setComp(<PreLive nextPage={() => nextPage('welcome')} />);
+      case 'live':
+        setComp(<Live nextPage={() => nextPage('welcome')} />);
         break;
 
       default:
@@ -68,11 +69,11 @@ const App = () => {
   }, [CompName]);
 
   return (
-    <>
+    <div className={`${isMobile ? 'is-mobile' : 'is-pc'}`}>
       <Suspense fallback={''}>{Comp}</Suspense>
       <div className="load-font">font</div>
       <audio src={require(`@static/music/bgm.mp3`).default} controls="controls" preload="true" id="bgAudio" hidden></audio>
-    </>
+    </div>
   );
 };
 

@@ -5,8 +5,8 @@ import BottomImg from "@components/bottom-img/index.jsx";
 
 import PlayBtn from "@static/images/play_btn.png";
 import StopBtn from "@static/images/stop_btn.png";
-import SaveBtn from '@static/images/save_btn.png';
-import NextBtn from '@static/images/next_btn.png';
+import SaveBtn from "@static/images/save_btn.png";
+import NextBtn from "@static/images/next_btn.png";
 import "./index.less";
 
 const MUSIC_RESULT = ["aaaa", "aaab", "abaa", "abbb", "abbd"];
@@ -32,7 +32,7 @@ const Result = props => {
   };
 
   const handleNext = () => {
-    props.nextPage && props.nextPage()
+    props.nextPage && props.nextPage();
   };
 
   return (
@@ -48,10 +48,10 @@ const Result = props => {
             alt="roaringwild"
           />
           {isAudio && !playing && (
-            <img src={PlayBtn} className="audio-btn" onClick={handlePlay} />
+            <img src={PlayBtn} className="audio-btn" style={{top: props.selected === 'abaa' ? '41%' : '43%'}} onClick={handlePlay} />
           )}
           {isAudio && playing && (
-            <img src={StopBtn} className="audio-btn" onClick={handleStop} />
+            <img src={StopBtn} className="audio-btn" style={{top: props.selected === 'abaa' ? '41%' : '43%'}} onClick={handleStop} />
           )}
         </div>
 
@@ -60,7 +60,8 @@ const Result = props => {
         </div> */}
 
         <div className="bottom-btns">
-          <img src={SaveBtn} className="bottom-btn" />
+          {/* <img src={SaveBtn} className="bottom-btn" /> */}
+          <p style={{ fontSize: "10px", lineHeight: "25px" }}>长按保存图片</p>
           <img src={NextBtn} className="bottom-btn" onClick={handleNext} />
         </div>
 

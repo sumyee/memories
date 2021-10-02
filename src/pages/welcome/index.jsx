@@ -23,7 +23,7 @@ const Welcome = (props) => {
   return (
     <>
       <div
-        className="welcome-wrap animate__animated animate__fadeIn"
+        className="page-wrap welcome-wrap animate__animated animate__fadeIn"
         style={{ backgroundImage: `url(${BgImg})` }}
         onClick={handleClick}
       >

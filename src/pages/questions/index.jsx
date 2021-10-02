@@ -39,7 +39,7 @@ const Questions = (props) => {
     // }
     setTimeout(() => {
       handleNextStep();
-    }, 300);
+    }, 500);
   };
 
   const handleCreateMemories = () => {
@@ -58,33 +58,33 @@ const Questions = (props) => {
           className="questions-center-img"
           src={EntryImg}
           alt="roaringwild"
+          onClick={() => handleNextStep()}
         />
-        <img
+        {/* <img
           className="questions-next-img"
           src={NextBtn}
           onClick={() => handleNextStep()}
-        />
+        /> */}
       </>
     );
   };
 
   const renderQuestion = () => {
     const question = questionList[step];
-    console.log(question);
     return (
       <div className={`question-cont welcome-wrap animate__animated animate__fadeIn ${step === 3 ? 'set-font-size' : ''}`}>
         <p className="question-mark">QUESTION：</p>
 
         {question.title.map((text, index) => (
-          <p className="question-title" key={index}>
+          <p className={`question-title animate__animated animate__fadeInUp animate__delay-${index + 1}s`} key={index}>
             {text}
           </p>
         ))}
 
-        <div className="select-box-wrap">
+        <div className="select-box-wrap animate__animated animate__fadeIn animate__delay-3s">
           {question.answers.map((answer, index) => (
             <div
-              className={`select-box ${
+              className={`select-box tap-active ${
                 selectedList[step] === INDEX_LETTER[index].toLowerCase()
                   ? 'selected'
                   : ''
@@ -105,24 +105,37 @@ const Questions = (props) => {
           ))}
         </div>
 
-        <div className="question-btns">
-          <img src={BackBtn} className="back-btn" onClick={handleBack} />
+        <div className="question-btns animate__animated animate__fadeIn animate__delay-4s">
+          <img src={BackBtn} className="back-btn tap-active" onClick={handleBack} />
         </div>
       </div>
     );
   };
 
+  const renderQuestion1 = () => {
+    return renderQuestion()
+  }
+  const renderQuestion2 = () => {
+    return renderQuestion()
+  }
+  const renderQuestion3 = () => {
+    return renderQuestion()
+  }
+  const renderQuestion4 = () => {
+    return renderQuestion()
+  }
+
   const renderInput1 = () => {
     return (
       <div className="question-cont welcome-wrap input-question animate__animated animate__fadeIn">
         <p className="question-mark">QUESTION：</p>
-        <p className="question-title">回忆对你而言，意味着什么？</p>
-        <div className="input-box-wrap">
+        <p className="question-title animate__animated animate__fadeIn animate__delay-1s">回忆对你而言，意味着什么？</p>
+        <div className="input-box-wrap animate__animated animate__fadeIn animate__delay-2s">
           <img src={InputBoxBg} className="input-box-bg" />
           <textarea name="" id="" rows="3" value={input1} onInput={(e) => setInput1(e.target.value)}></textarea>
         </div>
 
-        <div className="question-btns">
+        <div className="question-btns animate__animated animate__fadeIn animate__delay-3s">
           <img src={BackBtn} className="back-btn" onClick={handleBack} />
           <img src={NextBtn} className="next-btn" onClick={() => {
             const val = input1.trim()
@@ -141,13 +154,13 @@ const Questions = (props) => {
     return (
       <div className="question-cont welcome-wrap input-question animate__animated animate__fadeIn">
         <p className="question-mark">QUESTION：</p>
-        <p className="question-title">可以分享一段你难忘的回忆吗？(•͈˽•͈)</p>
-        <div className="input-box-wrap">
+        <p className="question-title animate__animated animate__fadeIn animate__delay-1s">可以分享一段你难忘的回忆吗？(•͈˽•͈)</p>
+        <div className="input-box-wrap animate__animated animate__fadeIn animate__delay-2s">
           <img src={InputBoxBg} className="input-box-bg" />
           <textarea name="" id="" rows="3" value={input2} onInput={(e) => setInput2(e.target.value)}></textarea>
         </div>
 
-        <div className="question-btns">
+        <div className="question-btns animate__animated animate__fadeIn animate__delay-3s">
           <img src={BackBtn} className="back-btn" onClick={handleBack} />
           <img src={MemoriesBtn} className="memories-btn" onClick={() => {
             const val = input2.trim()
@@ -172,7 +185,11 @@ const Questions = (props) => {
         <TopLogo />
 
         {step === -1 && renderEntry()}
-        {step > -1 && step < 4 && renderQuestion()}
+        {/* {step > -1 && step < 4 && renderQuestion()} */}
+        {step === 0 && renderQuestion1()}
+        {step === 1 && renderQuestion2()}
+        {step === 2 && renderQuestion3()}
+        {step === 3 && renderQuestion4()}
         {step === 4 && renderInput1()}
         {step === 5 && renderInput2()}
 
