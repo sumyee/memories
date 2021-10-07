@@ -1,43 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { getTime } from "@service/index";
-import { countdown } from "@utils/index";
+import { isPrevLive, isLiving, isLived, stage3 } from "@utils/index";
 import CONSTANT from "@constant/index";
+import NextBtn from "@static/images/next_btn.png";
+import BackBtn from "@static/images/back_btn.png";
 import Bg1 from "@static/images/welcome_bg.jpg";
-import Logo from "@static/images/logo.png";
 import PreLiveBg from "@static/images/pre_live_bg.png";
 
-import CutDown from './components/CutDown/index.jsx'
+import CutDown from "./components/CutDown/index.jsx";
 
-import TopLogo from '@components/top-logo/index.jsx';
-import BottomImg from '@components/bottom-img/index.jsx';
+import TopLogo from "@components/top-logo/index.jsx";
+import BottomImg from "@components/bottom-img/index.jsx";
 
 import "./index.less";
 
 const PreLive = props => {
   const [step, setStep] = useState(1);
+  const [startLive, setStartLive] = useState(false);
+
+  const hanleBack = () => {
+    props.backPage && props.backPage();
+  };
 
   useEffect(() => {
-    // getTime().then((res) => {
-    //   console.log(res);
-    //   const cd = countdown(null, CONSTANT.LIVE_PREV_TIME)
-    //   console.log(cd);
-    // });
-    // setTimeout(() => {
-    //   props.nextPage && props.nextPage()
-    // }, 5000)
-    // const timer = setInterval(() => {
-    //   countdown(null, CONSTANT.LIVE_PREV_TIME);
-    // }, 1000);
-
-    // return () => {
-    //   clearInterval(timer);
-    // };
+    console.log(isPrevLive(), isLiving(), isLived());
   }, []);
 
-  const renderCountdown = () => {
-    setInterval(() => {
-      countdown(null, CONSTANT.LIVE_PREV_TIME);
-    }, 1000);
+  const handleTimeEnd = () => {
+    console.log('handleTimeEnd');
+    setStartLive(true)
   };
 
   return (
@@ -49,18 +40,20 @@ const PreLive = props => {
         <TopLogo />
 
         <div className="time-wrap">
-          <CutDown />
+          {isPrevLive() && <CutDown timeEnd={handleTimeEnd} />}
 
           <div className="live-box">
-            <img src={PreLiveBg} className="pre-live-bg" />
+            {(isPrevLive() && !startLive) && <img src={PreLiveBg} className="pre-live-bg" />}
+            {(startLive || isLiving()) && (
+              <iframe src="https://play.yunxi.tv/livestream/embed-player?id=0a345f1063574f9e82d4553a6a1b8c92&auth_key=ba20149b2da626478104c433bb487966"></iframe>
+            )}
+          </div>
+
+          <div className="bottom-btns">
+            <img src={BackBtn} className="back-btn" onClick={hanleBack} />
+            {/* <img src={NextBtn} className="next-btn" /> */}
           </div>
         </div>
-
-        {/* <iframe
-          src="https://play.yunxi.tv/livestream/embed-player?id=0a345f1063574f9e82d4553a6a1b8c92&auth_key=ba20149b2da626478104c433bb487966"
-          width="640"
-          height="480 "
-        ></iframe> */}
 
         <BottomImg />
       </div>

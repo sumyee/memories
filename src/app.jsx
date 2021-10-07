@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from 'react';
-import { isMobile } from '@utils/index';
+import { isMobile, isPrevLive, stage1, stage2, stage3 } from '@utils/index';
 import './app.less';
 
 const emptyComp = <div></div>;
@@ -10,10 +10,17 @@ const Result = React.lazy(() => import('@pages/result/index.jsx'));
 const Invitation = React.lazy(() => import('@pages/invitation/index.jsx'));
 const Live = React.lazy(() => import('@pages/live/index.jsx'));
 
+const checkStage = () => {
+  if(stage1()) return 'welcome';
+  if(stage2()) return 'live';
+  if(stage3()) return 'welcome';
+  return 'welcome'
+}
+
 const App = () => {
   const [Comp, setComp] = useState(emptyComp);
   const [selectedStr, setSelectedStr] = useState('');
-  const [CompName, setCompName] = useState('welcome');
+  const [CompName, setCompName] = useState(checkStage());
 
   // 播放背景音乐
   const playAudio = () => {
@@ -48,7 +55,7 @@ const App = () => {
         setComp(<Invitation nextPage={() => nextPage('live')} />);
         break;
       case 'live':
-        setComp(<Live nextPage={() => nextPage('welcome')} />);
+        setComp(<Live backPage={() => nextPage('invitation')} />);
         break;
 
       default:

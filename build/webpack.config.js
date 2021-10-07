@@ -1,10 +1,12 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+console.log(process.env.NODE_ENV);
 module.exports = {
-  mode: 'development',
-  entry: path.resolve(__dirname, '../src/index.js'),
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+  entry: {
+    app: path.resolve(__dirname, '../src/index.js'),
+  },
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'js/[name]-[contenthash:8].js',

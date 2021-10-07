@@ -1,16 +1,16 @@
 import BgImg from "@static/images/invitation_poster.jpg";
-import font from "@static/fonts/GlowSansJ-Condensed-Medium.ttf";
+import font from "@static/fonts/GlowSansSC-Condensed-Medium.otf";
 
 export default function draw(text, cb) {
-  console.log(text, BgImg, font);
+  // console.log(text, BgImg, font);
 
   // 加载字体
-  const fontface = new FontFace("GlowSansJ-Condensed-Medium", `url(${font})`);
+  const fontface = new FontFace("GlowSansSC-Condensed-Medium", `url(${font})`);
   document.fonts.add(fontface);
   fontface.load();
 
-  // if (document.fonts.check(`GlowSansJ-Condensed-Medium`)) {
-  //   console.log("GlowSansJ-Condensed-MediumGlowSansJ-Condensed-Medium");
+  // if (document.fonts.check(`GlowSansSC-Condensed-Medium`)) {
+  //   console.log("GlowSansSC-Condensed-MediumGlowSansSC-Condensed-Medium");
   // }
 
   fontface.loaded
@@ -20,14 +20,15 @@ export default function draw(text, cb) {
     })
     .catch(err => {
       // 字体加载失败
+      drawing();
     });
 
   function drawing() {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
 
-    canvas.width = 1182;
-    canvas.height = 1890;
+    canvas.width = 1125;
+    canvas.height = 1799;
 
     const poster = new Image();
     poster.src = BgImg;
@@ -37,8 +38,8 @@ export default function draw(text, cb) {
 
       ctx.fillStyle = "#f4efdc";
       ctx.fill();
-      ctx.font = "80px GlowSansJ-Condensed-Medium";
-      ctx.fillText(text, 70, 1170);
+      ctx.font = "80px GlowSansSC-Condensed-Medium";
+      ctx.fillText(text, 70, 1125);
 
       const base64 = canvas.toDataURL("image/jpg");
 

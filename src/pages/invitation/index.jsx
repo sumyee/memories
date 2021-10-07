@@ -10,17 +10,22 @@ import BackBtn from "@static/images/back_btn.png";
 import SaveBtn from "@static/images/save_btn.png";
 
 import "./index.less";
+import { postInfo } from "@service/index";
 
 const NAME_MAX_LEN = 15;
 
-const Invitation = (props) => {
+const Invitation = props => {
   const [showPoster, setShowPoster] = useState(false);
   const [name, setName] = useState("");
   const [base64, setBase64] = useState("");
 
   const postData = () => {
-    console.log('...');
-  }
+    postInfo({
+      name: name,
+      question1: sessionStorage.getItem("input1"),
+      question2: sessionStorage.getItem("input2")
+    });
+  };
 
   const renderInput = () => {
     return (
@@ -35,11 +40,6 @@ const Invitation = (props) => {
             onInput={e => setName(e.target.value)}
           />
         </div>
-
-        {/* <iframe
-          src="https://play.yunxi.tv/pages/8d18b4458ab14610b7e60a6f6ce929f8"
-          frameBorder="0"
-        ></iframe> */}
       </div>
     );
   };
@@ -47,14 +47,21 @@ const Invitation = (props) => {
   const renderPoster = () => {
     return (
       <div className="poster-wrap">
-        <img src={base64} className="poster-img" />
+        <img
+          src={base64}
+          className="poster-img animate__animated animate__fadeIn"
+        />
 
         <div className="poster-btns">
           {/* <img src={SaveBtn} className="save-btn" /> */}
           <p style={{ fontSize: "10px", lineHeight: "25px" }}>长按保存图片</p>
-          <img src={NextBtn} className="next-btn" onClick={() => {
-            props.nextPage && props.nextPage()
-          }} />
+          <img
+            src={NextBtn}
+            className="next-btn"
+            onClick={() => {
+              props.nextPage && props.nextPage();
+            }}
+          />
         </div>
       </div>
     );
@@ -62,10 +69,11 @@ const Invitation = (props) => {
 
   const handleNext = () => {
     if (!name) {
-      console.log(2333333);
+      console.log("填写名字");
       return;
     }
-    postData()
+    postData();
+    sessionStorage.setItem("name", name);
     draw(name, base64 => {
       setBase64(base64);
       setShowPoster(true);

@@ -5,7 +5,7 @@ import TimeBoxBg from "@static/images/time_box.png";
 
 import "./index.less";
 
-const CutDown = () => {
+const CutDown = (props) => {
   const [time, setTime] = useState(null)
 
   useEffect(() => {
@@ -13,6 +13,7 @@ const CutDown = () => {
       const ctd = countdown(null, CONSTANT.LIVE_START_TIME);
       if(!ctd) {
         clearInterval(timer)
+        props.timeEnd && props.timeEnd();
         return
       }
       setTime(ctd)

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import BgImg from "@static/images/questions_bg.jpg";
 import BackNextBtn from "@components/back-next-btn/index.jsx";
 import BottomImg from "@components/bottom-img/index.jsx";
+import { stage3 } from '@utils/index';
 
 import PlayBtn from "@static/images/play_btn.png";
 import StopBtn from "@static/images/stop_btn.png";
@@ -26,7 +27,6 @@ const Result = props => {
 
   const handleStop = () => {
     const audio = document.getElementById("audio");
-    console.log(audio);
     audio.pause();
     setPlaying(false);
   };
@@ -43,7 +43,7 @@ const Result = props => {
       >
         <div className="poster-wrap">
           <img
-            className="result-img"
+            className="result-img animate__animated animate__fadeIn"
             src={resultPoster.default}
             alt="roaringwild"
           />
@@ -62,7 +62,7 @@ const Result = props => {
         <div className="bottom-btns">
           {/* <img src={SaveBtn} className="bottom-btn" /> */}
           <p style={{ fontSize: "10px", lineHeight: "25px" }}>长按保存图片</p>
-          <img src={NextBtn} className="bottom-btn" onClick={handleNext} />
+          {!stage3() && (<img src={NextBtn} className="bottom-btn" onClick={handleNext} />)}
         </div>
 
         <BottomImg />

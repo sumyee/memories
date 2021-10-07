@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Qs from 'qs';
 
 const request = axios.create({
   timeout: 1000 * 60,
@@ -7,7 +8,10 @@ const request = axios.create({
 request.interceptors.request.use((config) => {
   console.log(config);
   return Object.assign({}, config, {
-    headers: {},
+    // headers: {
+    //   'Content-Type': 'application/x-www-form-urlencoded',
+    // },
+    // data: Qs.stringify(config.data),
   });
 });
 

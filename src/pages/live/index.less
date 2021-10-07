@@ -15,12 +15,34 @@
     transform: translate(-50%, -50%);
 
     .live-box {
+      position: relative;
       width: 100%;
       margin-top: 20px;
+      height: 0;
+      padding-bottom: 56%;
 
       .pre-live-bg {
         width: 100%;
       }
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    }
+  }
+
+  .bottom-btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 25px;
+    .back-btn, .next-btn {
+      height: 25px;
     }
   }
 }
