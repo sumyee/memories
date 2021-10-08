@@ -39,7 +39,7 @@ export default function draw(text, cb) {
       ctx.fillStyle = "#f4efdc";
       ctx.fill();
       ctx.font = "80px GlowSansSC-Condensed-Medium";
-      ctx.fillText(text, 70, 1125);
+      ctx.fillText(text, 70, 1030);
 
       const base64 = canvas.toDataURL("image/jpg");
 

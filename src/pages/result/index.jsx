@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BgImg from "@static/images/questions_bg.jpg";
-import BackNextBtn from "@components/back-next-btn/index.jsx";
 import BottomImg from "@components/bottom-img/index.jsx";
 import { stage3 } from '@utils/index';
 
 import PlayBtn from "@static/images/play_btn.png";
 import StopBtn from "@static/images/stop_btn.png";
-import SaveBtn from "@static/images/save_btn.png";
 import NextBtn from "@static/images/next_btn.png";
 import "./index.less";
 
@@ -35,6 +33,17 @@ const Result = props => {
     props.nextPage && props.nextPage();
   };
 
+  const handleStopBgMusic = () => {
+    const audio = document.getElementById("bgAudio");
+    audio.pause();
+  };
+
+  useEffect(() => {
+    if(isAudio) {
+      handleStopBgMusic();
+    }
+  }, [])
+
   return (
     <>
       <div
@@ -55,12 +64,7 @@ const Result = props => {
           )}
         </div>
 
-        {/* <div className="bottom-btn">
-          <BackNextBtn />
-        </div> */}
-
         <div className="bottom-btns">
-          {/* <img src={SaveBtn} className="bottom-btn" /> */}
           <p style={{ fontSize: "10px", lineHeight: "25px" }}>长按保存图片</p>
           {!stage3() && (<img src={NextBtn} className="bottom-btn" onClick={handleNext} />)}
         </div>

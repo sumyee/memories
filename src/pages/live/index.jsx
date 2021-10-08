@@ -14,6 +14,8 @@ import BottomImg from "@components/bottom-img/index.jsx";
 
 import "./index.less";
 
+const LiveURL = 'https://play.yunxi.tv/livestream/web-embed-player?id=70efd162366a42ad80ba200a80efa85c';
+
 const PreLive = props => {
   const [step, setStep] = useState(1);
   const [startLive, setStartLive] = useState(false);
@@ -45,7 +47,7 @@ const PreLive = props => {
           <div className="live-box">
             {(isPrevLive() && !startLive) && <img src={PreLiveBg} className="pre-live-bg" />}
             {(startLive || isLiving()) && (
-              <iframe src="https://play.yunxi.tv/livestream/embed-player?id=0a345f1063574f9e82d4553a6a1b8c92&auth_key=ba20149b2da626478104c433bb487966"></iframe>
+              <iframe src={LiveURL}></iframe>
             )}
           </div>
 

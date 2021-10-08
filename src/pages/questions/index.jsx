@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import QuestionsBg from "@static/images/questions_bg.jpg";
+// import QuestionsBgGif from "@static/images/questions_bg.jpg";
+import QuestionsBgGif from "@static/images/questions_bg.gif";
 import { questionList } from "./const";
 import TopLogo from "@components/top-logo/index.jsx";
 import BottomImg from "@components/bottom-img/index.jsx";
@@ -68,13 +70,14 @@ const Questions = props => {
     props.nextPage && props.nextPage(selectedList.join(""));
   };
 
-  const handleStopMusic = () => {
-    const audio = document.getElementById("bgAudio");
-    audio.pause();
-  };
+  const preLoadImg = () => {
+    const img = new Image();
+    img.src = SelectedBg;
+  }
 
   useEffect(() => {
     changeClick()
+    preLoadImg()
   }, [])
 
   const renderEntry = () => {
@@ -86,11 +89,6 @@ const Questions = props => {
           alt="roaringwild"
           onClick={() => handleNextStep()}
         />
-        {/* <img
-          className="questions-next-img"
-          src={NextBtn}
-          onClick={() => handleNextStep()}
-        /> */}
       </>
     );
   };
@@ -237,7 +235,6 @@ const Questions = props => {
                 alert("嘿！简单写写吧，我们真的很想知道。");
                 return;
               }
-              handleStopMusic();
               handleCreateMemories();
             }}
           />
@@ -250,12 +247,11 @@ const Questions = props => {
     <>
       <div
         className="page-wrap questions-wrap animate__animated animate__fadeIn"
-        style={{ backgroundImage: `url(${QuestionsBg})` }}
+        style={{ backgroundImage: `url(${step === - 1 ? QuestionsBgGif : QuestionsBg})` }}
       >
         <TopLogo />
 
         {step === -1 && renderEntry()}
-        {/* {step > -1 && step < 4 && renderQuestion()} */}
         {step === 0 && renderQuestion1()}
         {step === 1 && renderQuestion2()}
         {step === 2 && renderQuestion3()}
