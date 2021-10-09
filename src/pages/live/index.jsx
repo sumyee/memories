@@ -47,7 +47,10 @@ const PreLive = props => {
           <div className="live-box">
             {(isPrevLive() && !startLive) && <img src={PreLiveBg} className="pre-live-bg" />}
             {(startLive || isLiving()) && (
-              <iframe src={LiveURL}></iframe>
+              // <iframe src={LiveURL}></iframe>
+              <img src={PreLiveBg} className="pre-live-bg" onClick={() => {
+                window.location.href = LiveURL
+              }} />
             )}
           </div>
 
