@@ -52,7 +52,7 @@ const App = () => {
         setComp(<Result selected={selectedStr} nextPage={() => nextPage('invitation')} />);
         break;
       case 'invitation':
-        setComp(<Invitation nextPage={() => nextPage('live')} />);
+        setComp(<Invitation nextPage={() => nextPage('live')} backPage={() => nextPage('result')} />);
         break;
       case 'live':
         setComp(<Live backPage={() => nextPage('invitation')} />);

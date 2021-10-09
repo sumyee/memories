@@ -18,6 +18,7 @@ const Invitation = props => {
   const [showPoster, setShowPoster] = useState(false);
   const [name, setName] = useState("");
   const [base64, setBase64] = useState("");
+  const [lock, setLock] = useState(false);
 
   const postData = () => {
     postInfo({
@@ -72,13 +73,20 @@ const Invitation = props => {
       console.log("填写名字");
       return;
     }
-    postData();
+    if(lock) return;
+    setLock(true);
     sessionStorage.setItem("name", name);
     draw(name, base64 => {
       setBase64(base64);
       setShowPoster(true);
+      postData();
+      setLock(false);
     });
   };
+
+  const handleBack = () => {
+    props.backPage && props.backPage();
+  }
 
   return (
     <>
@@ -95,7 +103,7 @@ const Invitation = props => {
         {!showPoster && (
           <>
             <div className="name-input-btns">
-              <img src={BackBtn} className="back-btn" />
+              <img src={BackBtn} className="back-btn" onClick={handleBack} />
               <img src={NextBtn} className="next-btn" onClick={handleNext} />
             </div>
           </>
